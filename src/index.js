@@ -11,11 +11,12 @@ import store from "./store";
 // Router
 import { BrowserRouter } from "react-router-dom";
 
+// React.StrictMode will activate additional checkings and warnings when app violates certain React rules
 // The Provider component makes the Redux Store available to any nested components that need to access the Redux Store. 
 // The BrowserRouter component sets a common basename for the nested Routes.
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store}> {/* All the components wrapped in the Provider can access store */}
       <BrowserRouter>
         <App />
       </BrowserRouter>

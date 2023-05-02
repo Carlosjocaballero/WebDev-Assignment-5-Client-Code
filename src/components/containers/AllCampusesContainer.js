@@ -9,8 +9,12 @@ import Header from './Header';
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk } from "../../store/thunks";
 import { AllCampusesView } from "../views";
+
+import { 
+  fetchAllCampusesThunk,
+  deleteCampusThunk
+} from "../../store/thunks";
 
 class AllCampusesContainer extends Component {
   // Get all campuses data from back-end database
@@ -26,6 +30,7 @@ class AllCampusesContainer extends Component {
         <Header />
         <AllCampusesView
           allCampuses={this.props.allCampuses}
+          deleteCampus ={this.props.deleteCampus}
         />
       </div>
     );
@@ -45,6 +50,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
+    deleteCampus: (campusId) => dispatch(deleteCampusThunk(campusId)),
   };
 };
 

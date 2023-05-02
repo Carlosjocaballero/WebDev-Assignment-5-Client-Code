@@ -9,6 +9,17 @@ import { Link } from "react-router-dom";
 // Take in props data to construct the component
 const CampusView = (props) => {
   const {campus} = props;
+  // If there are no camps, display a message
+  // if(!campus.length){
+  //   return(
+  //   <div>
+  //     <p>There are no campuses.</p>
+  //     <Link to={`newcampus`}>
+  //       <button>Add New Campus</button>
+  //     </Link>
+  //   </div> 
+  //   );
+  // }
   
   // Render a single Campus view with list of its students
   return (
