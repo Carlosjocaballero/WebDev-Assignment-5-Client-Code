@@ -20,7 +20,7 @@ class NewStudentContainer extends Component {
     this.state = {
       firstname: "", 
       lastname: "", 
-      campusId: null, 
+      campusId: null,
       redirect: false, 
       redirectId: null
     };
