@@ -19,10 +19,13 @@ class NewStudentContainer extends Component {
     super(props);
     this.state = {
       firstname: "", 
-      lastname: "", 
+      lastname: "",
+      email: "",
+      imageUrl: null,
+      gpa: null, 
       campusId: null,
       redirect: false, 
-      redirectId: null
+      redirectId: null,
     };
   }
 
@@ -37,9 +40,22 @@ class NewStudentContainer extends Component {
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
+    const firstName = event.target.firstname.value;
+    const lastName = event.target.lastname.value;
+    const email = event.target.email.value;
+    
+    if(firstName === "" || lastName === "" || email === ""){
+      alert("Please make sure first name, last name and email are filled in.")
+      return;
+    }
+
+
     let student = {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
+        email: this.state.email,
+        imageUrl: this.state.imageUrl,
+        gpa: this.state.gpa,
         campusId: this.state.campusId
     };
     
@@ -49,7 +65,10 @@ class NewStudentContainer extends Component {
     // Update state, and trigger redirect to show the new student
     this.setState({
       firstname: "", 
-      lastname: "", 
+      lastname: "",
+      email: "",
+      iamgeUrl: null,
+      gpa: null,
       campusId: null, 
       redirect: true, 
       redirectId: newStudent.id

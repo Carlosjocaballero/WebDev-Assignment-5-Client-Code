@@ -32,6 +32,10 @@ const AllStudentsView = (props) => {
               <Link to={`/student/${student.id}`}>
                 <h2>{name}</h2>
               </Link>
+              {/* By using this condition, if the field is null it will not display */}
+              {student.email && <p>{student.email}</p>}
+              {student.imageUrl && <img src={student.imageUrl} alt={name} style={{width: 200, height: 100}}></img>}
+              {student.gpa && <p>GPA: {student.gpa}</p>}
               <button onClick={() => deleteStudent(student.id)}>Delete</button>
               <hr/>
             </div>
