@@ -8,18 +8,7 @@ import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus} = props;
-  // If there are no camps, display a message
-  // if(!campus.length){
-  //   return(
-  //   <div>
-  //     <p>There are no campuses.</p>
-  //     <Link to={`newcampus`}>
-  //       <button>Add New Campus</button>
-  //     </Link>
-  //   </div> 
-  //   );
-  // }
+  const {campus, deleteCampus} = props;
   
   // Render a single Campus view with list of its students
   return (
@@ -33,13 +22,21 @@ const CampusView = (props) => {
         (campus.students.map( student => {
           let name = student.firstname + " " + student.lastname;
           return (
-            <div key={student.id}>
-              <Link to={`/student/${student.id}`}>
-                <h2>{name}</h2>
-              </Link>             
+            <div>
+              <div key={student.id}>
+                <Link to={`/student/${student.id}`}>
+                  <h2>{name}</h2>
+                </Link>             
+              </div>
+              {/* <button onClick={() => removeStudent(student.id)}>Remove Student</button> */}
+              <hr/>
             </div>
           );
         }) ) : (<p style={{fontWeight: 'bold'}}>[NO STUDENTS]</p>)}
+      
+      <Link to={`/campuses`}>
+        <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
+      </Link>
     </div>
   );
 };
