@@ -61,7 +61,7 @@ class EditStudentContainer extends Component {
             email: this.state.email === "" ? this.props.student.email : this.state.email,
             imageUrl: this.state.imageUrl == null ? this.props.student.imageUrl : this.state.imageUrl,
             gpa: this.state.gpa == null ? this.props.student.gpa : this.state.gpa,
-            campusId: this.state.campusId           
+            campusId: this.state.campusId === null ? this.props.student.campusId : this.state.campusId           
         };
 
         // Edit student in back-end database
