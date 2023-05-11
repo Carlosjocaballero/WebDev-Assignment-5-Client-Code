@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const AllCampusesView = (props) => {
   const {campuses, deleteCampus} = props;
+
   // If there is no campus, display a message.
   if (!props.allCampuses.length) {
     return (
@@ -20,6 +21,7 @@ const AllCampusesView = (props) => {
       </div>
     );
   }
+  let campus_photo;
 
   // If there is at least one campus, render All Campuses view 
   return (
@@ -31,7 +33,7 @@ const AllCampusesView = (props) => {
           <Link to={`/campus/${campus.id}`}>
             <h2>{campus.name}</h2>
           </Link>
-          <img src={campus.imageUrl} alt="School" style={{width: 500, height: 300}}></img>
+          <img src={!campus.imageUrl ? 'https://helloartsy.com/wp-content/uploads/kids/places/how-to-draw-a-college/how-to-draw-a-college-step-4.jpg' : campus.imageUrl} alt="School" style={{width: 500, height: 300}}></img>
           <h4>campus id: {campus.id}</h4>
           <p>{campus.address}</p>
           <p>{campus.description}</p>

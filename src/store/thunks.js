@@ -82,7 +82,8 @@ export const fetchAllStudentsThunk = () => async (dispatch) => {  // The THUNK
     let res = await axios.get(`/api/students`);  
     // Call Action Creator to return Action object (type + payload with "students" data)
     // Then dispatch the Action object to Reducer to update state 
-    dispatch(ac.fetchAllStudents(res.data));  
+    dispatch(ac.fetchAllStudents(res.data));
+    return res.data 
   } catch(err) {
     console.error(err);
   }
@@ -138,6 +139,7 @@ export const fetchStudentThunk = id => async dispatch => {  // The THUNK
     // Call Action Creator to return Action object (type + payload with student data)
     // Then dispatch the Action object to Reducer to display student data 
     dispatch(ac.fetchStudent(res.data));
+    return res
   } catch(err) {
     console.error(err);
   }
